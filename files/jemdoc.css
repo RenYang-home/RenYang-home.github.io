@@ -72,7 +72,7 @@ table#tlayout {
 
 body {
 	background: white;
-	font-family: Microsoft YaHei;
+	font-family: Georgia, serif;
 	padding-bottom: 8px;
 	margin: 0;
 }
@@ -116,7 +116,7 @@ tt {
 
 pre, tt {
 	font-size: 90%;
-	font-family: Microsoft YaHei;
+	font-family: monaco, monospace;
 }
 
 a, a > tt {
