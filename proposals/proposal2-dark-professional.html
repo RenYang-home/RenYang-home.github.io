@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ren Yang — Proposal 2 · Dark Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1020;
+    --bg-2: #121a30;
+    --card: #131c33;
+    --text: #e8edf7;
+    --muted: #93a0bd;
+    --line: #243352;
+    --accent: #38e1c4;
+    --accent-2: #7c9bff;
+    --radius: 16px;
+    --maxw: 980px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Inter", system-ui, sans-serif; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(900px 500px at 80% -10%, rgba(124,155,255,.18), transparent 60%),
+                      radial-gradient(700px 500px at 0% 0%, rgba(56,225,196,.12), transparent 55%);
+  }
+  h1, h2, h3, .brand { font-family: "Space Grotesk", sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #6ff0db; }
+
+  .nav { position: sticky; top: 0; z-index: 40; background: rgba(11,16,32,.7); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 15px 24px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .brand { font-weight: 700; margin-right: auto; letter-spacing: .02em; }
+  .brand .dot { color: var(--accent); }
+  .nav a.link { color: var(--muted); font-size: 14px; padding: 6px 12px; border-radius: 8px; }
+  .nav a.link:hover { color: var(--text); background: var(--bg-2); }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .hero { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: center; padding: 70px 0 44px; }
+  .ring { padding: 5px; border-radius: 26px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); width: fit-content; }
+  .ring img { width: 190px; height: 190px; object-fit: cover; border-radius: 22px; display: block; }
+  .eyebrow { color: var(--accent); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: 12.5px; }
+  .hero h1 { font-size: 44px; margin: 8px 0 8px; letter-spacing: -.02em; }
+  .hero .role { color: var(--muted); font-size: 18px; margin: 0; }
+  .hero .role b { color: var(--text); font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .chip { padding: 9px 15px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; color: var(--text); background: rgba(255,255,255,.02); transition: .18s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  section { padding: 34px 0; }
+  h2.sec { font-size: 22px; margin: 0 0 20px; display: flex; align-items: center; gap: 12px; }
+  h2.sec::before { content: ""; width: 28px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  p.bio { font-size: 17px; color: #c8d2e8; max-width: 760px; }
+
+  .news { display: grid; gap: 12px; }
+  .news .item { display: grid; grid-template-columns: 70px 1fr; gap: 18px; align-items: start; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+  .news .yr { font-family: "Space Grotesk"; font-weight: 700; color: var(--accent); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pub { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); transition: .2s ease; }
+  .pub:hover { transform: translateY(-4px); border-color: var(--accent-2); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+  .pub .thumb { height: 150px; background: var(--bg-2); overflow: hidden; }
+  .pub .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .pub .body { padding: 16px 18px; }
+  .pub h3 { margin: 0 0 6px; font-size: 16.5px; }
+  .pub .authors { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+  .venue-badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(56,225,196,.12); color: var(--accent); border: 1px solid rgba(56,225,196,.3); }
+  .venue-badge.hl { background: rgba(255,128,90,.12); color: #ff9d6e; border-color: rgba(255,128,90,.3); }
+  .links a { font-size: 13px; color: var(--accent-2); margin-right: 12px; }
+
+  footer { padding: 50px 0 70px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .ring { margin: 0 auto; }
+    .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="brand">Ren Yang<span class="dot">.</span></span>
+      <a class="link" href="#bio">About</a>
+      <a class="link" href="#news">News</a>
+      <a class="link" href="#pubs">Publications</a>
+      <a class="link" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="ring"><img src="../files/yangren.jpg" alt="Ren Yang" /></div>
+      <div>
+        <div class="eyebrow">Computer Vision · AI Agents</div>
+        <h1>Ren Yang</h1>
+        <p class="role"><b>Senior Applied Scientist</b>, Microsoft Copilot · Dr. sc. ETH Zürich</p>
+        <div class="chips">
+          <a class="chip" href="https://scholar.google.ch/citations?user=3NgkOp0AAAAJ&hl=en" target="_blank">Google Scholar</a>
+          <a class="chip" href="https://linkedin.com/in/ren-yang-56221b108" target="_blank">LinkedIn</a>
+          <a class="chip" href="https://www.microsoft.com/en-us/research/people/yangren/" target="_blank">MSR Homepage</a>
+          <a class="chip" href="https://github.com/RenYang-home" target="_blank">GitHub</a>
+          <a class="chip" href="mailto:yangren@microsoft.com">Email</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="bio">
+      <h2 class="sec">Biography</h2>
+      <p class="bio">I am a Senior Applied Scientist at <a href="https://www.microsoft.com/en-us/microsoft-365-copilot">Microsoft Copilot</a>, working on Computer-Use AI Agents. Previously a Senior Researcher at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a> on AI-powered future media experiences. I received my Dr. sc. at the <a href="http://www.vision.ee.ethz.ch/en/">Computer Vision Lab</a>, ETH Zürich, advised by Prof. Luc Van Gool and Prof. Radu Timofte.</p>
+    </section>
+
+    <section id="news">
+      <h2 class="sec">News</h2>
+      <div class="news">
+        <div class="item"><span class="yr">2026</span><span>Serving as an <b>Area Chair</b> at NeurIPS 2026.</span></div>
+        <div class="item"><span class="yr">2025</span><span>One paper accepted to <b>NeurIPS 2025</b>.</span></div>
+        <div class="item"><span class="yr">2024</span><span>One paper accepted to <b>CVPR 2024</b> (Highlight); organizing the 9th NTIRE Workshop.</span></div>
+      </div>
+    </section>
+
+    <section id="pubs">
+      <h2 class="sec">Selected Publications</h2>
+      <div class="grid">
+        <article class="pub">
+          <div class="thumb"><img src="../files/nips.jpg" alt="" /></div>
+          <div class="body">
+            <h3>Omnidirectional 3D Scene Reconstruction from Single Image</h3>
+            <p class="authors">Ren Yang, Jiahao Li, Yan Lu</p>
+            <span class="venue-badge">NeurIPS 2025</span>
+            <p class="links"><a href="../files/nips.jpg">Paper</a></p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="thumb"><img src="../files/boosting.png" alt="" /></div>
+          <div class="body">
+            <h3>Boosting Neural Representations for Videos</h3>
+            <p class="authors">Xinjie Zhang, Ren Yang†, Dailan He, et al.</p>
+            <span class="venue-badge hl">CVPR 2024 · Highlight</span>
+            <p class="links"><a href="#">Paper</a><a href="https://github.com/Xinjie-Q/Boosting-NeRV">Code</a></p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="thumb"><img src="../files/ALVC.PNG" alt="" /></div>
+          <div class="body">
+            <h3>Advancing Learned Video Compression with In-loop Prediction</h3>
+            <p class="authors">Ren Yang, Radu Timofte, Luc Van Gool</p>
+            <span class="venue-badge">IEEE T-CSVT 2023</span>
+            <p class="links"><a href="#">Paper</a><a href="https://github.com/RenYang-home/ALVC">Code</a></p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="thumb"><img src="../files/NTIRE24.PNG" alt="" /></div>
+          <div class="body">
+            <h3>NTIRE 2024 Challenge on Blind Enhancement of Compressed Image</h3>
+            <p class="authors">Ren Yang, Radu Timofte</p>
+            <span class="venue-badge">CVPRW 2024</span>
+            <p class="links"><a href="#">Report</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer id="contact">
+      yangren@microsoft.com (work) · ren.yang@alumni.ethz.ch (personal)<br />
+      Proposal 2 — Dark Professional
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ren Yang — Proposal 3 · Two-column Academic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf9f6;
+    --panel: #ffffff;
+    --text: #20242b;
+    --muted: #6a7280;
+    --line: #eae8e0;
+    --line-2: #ece9e2;
+    --accent: #9a3b2e;      /* warm academic maroon */
+    --accent-soft: #f6eceA;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(60,40,30,.05), 0 10px 30px rgba(60,40,30,.07);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Inter", system-ui, sans-serif; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, .serif { font-family: "Source Serif 4", Georgia, serif; }
+
+  .layout { display: grid; grid-template-columns: 300px 1fr; gap: 40px; max-width: 1060px; margin: 0 auto; padding: 40px 28px; align-items: start; }
+
+  /* Sidebar */
+  .sidebar { position: sticky; top: 40px; }
+  .card { background: var(--panel); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; text-align: center; }
+  .card img.avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid var(--accent-soft); }
+  .card h1 { font-size: 24px; margin: 16px 0 4px; }
+  .card .role { color: var(--muted); font-size: 14.5px; margin: 0; }
+  .card .role b { color: var(--text); font-weight: 600; }
+  .divider { height: 1px; background: var(--line-2); margin: 18px 0; }
+  .links { display: grid; gap: 9px; text-align: left; }
+  .links a { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); padding: 6px 8px; border-radius: 8px; }
+  .links a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+  .links .ic { width: 20px; text-align: center; color: var(--accent); font-weight: 700; }
+  .sidenav { margin-top: 16px; display: grid; gap: 2px; text-align: left; }
+  .sidenav a { font-size: 13.5px; color: var(--muted); padding: 5px 8px; border-left: 2px solid transparent; border-radius: 0 6px 6px 0; }
+  .sidenav a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+
+  /* Content */
+  .content { min-width: 0; }
+  .panel { background: var(--panel); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: var(--shadow); padding: 26px 28px; margin-bottom: 22px; }
+  h2.sec { font-size: 22px; margin: 0 0 16px; color: var(--text); position: relative; padding-bottom: 10px; }
+  h2.sec::after { content: ""; position: absolute; left: 0; bottom: 0; width: 46px; height: 3px; background: var(--accent); border-radius: 3px; }
+  p.bio { font-size: 16.5px; color: #333a44; margin: 0; }
+
+  .timeline { position: relative; margin: 0; padding: 0 0 0 22px; list-style: none; }
+  .timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; padding: 0 0 16px 4px; }
+  .timeline li::before { content: ""; position: absolute; left: -22px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .timeline .yr { font-weight: 700; color: var(--accent); font-size: 13px; }
+
+  .pub { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line-2); }
+  .pub:last-child { border-bottom: 0; padding-bottom: 0; }
+  .pub img { width: 140px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line-2); }
+  .pub h3 { margin: 0 0 4px; font-size: 16.5px; }
+  .pub .authors { color: var(--muted); font-size: 14px; margin: 0 0 5px; }
+  .pub .venue { font-size: 13.5px; color: #333a44; }
+  .pub .venue b { color: var(--accent); }
+  .tag-hl { display: inline-block; font-size: 11px; font-weight: 700; color: #b14a16; background: #fdf0e6; padding: 2px 7px; border-radius: 5px; margin-left: 6px; }
+  .pub .meta a { font-size: 13px; margin-right: 10px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 6px 0 30px; }
+
+  @media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .pub { grid-template-columns: 1fr; }
+    .pub img { width: 100%; height: 160px; }
+  }
+</style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="card">
+        <img class="avatar" src="../files/yangren.jpg" alt="Ren Yang" />
+        <h1>Ren Yang</h1>
+        <p class="role"><b>Senior Applied Scientist</b><br />Microsoft Copilot<br />Dr. sc. ETH Zürich</p>
+        <div class="divider"></div>
+        <div class="links">
+          <a href="mailto:yangren@microsoft.com"><span class="ic">@</span> yangren@microsoft.com</a>
+          <a href="https://scholar.google.ch/citations?user=3NgkOp0AAAAJ&hl=en" target="_blank"><span class="ic">G</span> Google Scholar</a>
+          <a href="https://linkedin.com/in/ren-yang-56221b108" target="_blank"><span class="ic">in</span> LinkedIn</a>
+          <a href="https://github.com/RenYang-home" target="_blank"><span class="ic">GH</span> GitHub</a>
+          <a href="https://www.microsoft.com/en-us/research/people/yangren/" target="_blank"><span class="ic">M</span> MSR Homepage</a>
+        </div>
+        <div class="divider"></div>
+        <nav class="sidenav">
+          <a href="#bio">Biography</a>
+          <a href="#news">News</a>
+          <a href="#pubs">Selected Publications</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="bio" class="panel">
+        <h2 class="sec">Biography</h2>
+        <p class="bio">I am a Senior Applied Scientist at <a href="https://www.microsoft.com/en-us/microsoft-365-copilot">Microsoft Copilot</a>, working on research and development of Computer-Use AI Agents. Previously, I was a Senior Researcher at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a> on AI-powered future media experiences, and a Senior Algorithm Researcher at SenseTime. I obtained my Dr. sc. at the <a href="http://www.vision.ee.ethz.ch/en/">Computer Vision Lab</a>, ETH Zürich, under the supervision of Prof. Luc Van Gool and Prof. Radu Timofte.</p>
+      </section>
+
+      <section id="news" class="panel">
+        <h2 class="sec">News</h2>
+        <ul class="timeline">
+          <li><span class="yr">2026</span> — Serving as an <b>Area Chair</b> at NeurIPS 2026.</li>
+          <li><span class="yr">2025</span> — One paper accepted to <b>NeurIPS 2025</b>.</li>
+          <li><span class="yr">2024</span> — One paper accepted to <b>CVPR 2024</b> (Highlight); organizing the 9th NTIRE Workshop.</li>
+          <li><span class="yr">2023</span> — Two papers accepted to <b>IEEE T-CSVT</b>; organizing the 8th NTIRE Workshop.</li>
+        </ul>
+      </section>
+
+      <section id="pubs" class="panel">
+        <h2 class="sec">Selected Publications</h2>
+        <article class="pub">
+          <img src="../files/nips.jpg" alt="" />
+          <div>
+            <h3>Omnidirectional 3D Scene Reconstruction from Single Image</h3>
+            <p class="authors">Ren Yang, Jiahao Li, Yan Lu</p>
+            <p class="venue"><b>NeurIPS</b> 2025</p>
+            <p class="meta"><a href="../files/nips.jpg">Paper</a></p>
+          </div>
+        </article>
+        <article class="pub">
+          <img src="../files/boosting.png" alt="" />
+          <div>
+            <h3>Boosting Neural Representations for Videos with a Conditional Decoder</h3>
+            <p class="authors">Xinjie Zhang, Ren Yang†, Dailan He, et al.</p>
+            <p class="venue"><b>CVPR</b> 2024 <span class="tag-hl">Highlight</span></p>
+            <p class="meta"><a href="#">Paper</a><a href="https://github.com/Xinjie-Q/Boosting-NeRV">Code</a></p>
+          </div>
+        </article>
+        <article class="pub">
+          <img src="../files/ALVC.PNG" alt="" />
+          <div>
+            <h3>Advancing Learned Video Compression with In-loop Frame Prediction</h3>
+            <p class="authors">Ren Yang, Radu Timofte, Luc Van Gool</p>
+            <p class="venue"><b>IEEE T-CSVT</b> 2023</p>
+            <p class="meta"><a href="#">Paper</a><a href="https://github.com/RenYang-home/ALVC">Code</a></p>
+          </div>
+        </article>
+      </section>
+
+      <footer>Proposal 3 — Two-column Academic</footer>
+    </main>
+  </div>
+</body>
+</html>
